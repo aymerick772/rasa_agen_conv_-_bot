@@ -1,0 +1,58 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - demander_meteo
+
+responses:
+  utter_greet:
+  - text: "Salut ! Comment ça va ?"
+
+  utter_cheer_up:
+  - text: "Voici quelque chose pour te remonter le moral :"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Est-ce que cela t'a aidé ?"
+
+  utter_happy:
+  - text: "Super, continue comme ça !"
+
+  utter_goodbye:
+  - text: "Au revoir !"
+
+  utter_iamabot:
+  - text: "Je suis un bot, propulsé par Rasa."
+
+  utter_meteo:
+  - text: "Il fait beau aujourd'hui avec une température de 25°C."
+
+  utter_reservation_confirmation:
+  - text: "Vous souhaitez réserver un hôtel pour le {date} à {lieu}, c'est bien ça ?"
+
+rules:
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Provide weather information when the user asks about the weather
+  steps:
+  - intent: demander_meteo
+  - action: utter_meteo
+
+- rule: Confirm hotel reservation details
+  steps:
+  - intent: reservation_hotel
+  - action: action_confirm_reservation

@@ -1,0 +1,40 @@
+# Ignorer les dossiers et fichiers générés automatiquement
+models/
+.rasa/
+*.tar.gz
+*.lock
+
+# Ignorer l'environnement virtuel
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignorer les fichiers de logs
+logs/
+*.log
+
+# Ignorer les fichiers de configuration spécifiques à l'environnement
+credentials.yml
+endpoints.yml
+
+# Ignorer les fichiers d'intégration continue potentiels
+.DS_Store
+.idea/
+.vscode/
+*.iml
+
+# Ne pas suivre les fichiers temporairement utilisés
+tmp/
+*.tmp
+*.swp
+*.bak
+
+# Ignorer les fichiers de configuration système
+config.yml
+
+# Fichiers spécifiques aux outils (ajuster selon tes besoins)
+node_modules/
+yarn.lock
+package-lock.json
