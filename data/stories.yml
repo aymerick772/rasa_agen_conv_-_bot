@@ -2,29 +2,17 @@ version: "3.1"
 
 stories:
 
-- story: happy path
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
-  - action: utter_goodbye
+  - story: réservation d'hôtel réussie
+    steps:
+      - intent: book_hotel
+      - action: utter_book_hotel
+      - intent: inform_date
+      - action: utter_nights
+      - intent: inform_nights
+      - action: utter_room_type
+      - intent: inform_room_type
+      - action: utter_guests
+      - intent: inform_guests
+      - action: utter_confirm
+      - intent: confirm
+      - action: utter_end_reservation

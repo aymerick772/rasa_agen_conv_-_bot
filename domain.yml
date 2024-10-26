@@ -2,57 +2,59 @@ version: "3.1"
 
 intents:
   - greet
+  - book_hotel
+  - inform_date
+  - inform_nights
+  - inform_room_type
+  - inform_guests
+  - confirm
   - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-  - demander_meteo
+
+slots:
+  date_slot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: date
+
+  nights_slot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: nights
+
+  room_type_slot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: room_type
+
+  guests_slot:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: guests
+
+entities:
+  - date
+  - nights
+  - room_type
+  - guests
 
 responses:
-  utter_greet:
-  - text: "Salut ! Comment ça va ?"
-
-  utter_cheer_up:
-  - text: "Voici quelque chose pour te remonter le moral :"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Est-ce que cela t'a aidé ?"
-
-  utter_happy:
-  - text: "Super, continue comme ça !"
-
+  utter_book_hotel:
+    - text: "Je peux vous aider à réserver une chambre d'hôtel. C'est pour quelle date ?"
+  utter_nights:
+    - text: "Combien de nuits souhaitez-vous rester ?"
+  utter_room_type:
+    - text: "Préférez-vous une chambre simple, double, ou une suite ?"
+  utter_guests:
+    - text: "Combien de personnes séjourneront dans la chambre ?"
+  utter_confirm:
+    - text: "Merci pour ces informations. Votre réservation est confirmée pour {nights_slot} nuit(s) à partir du {date_slot}, dans une chambre {room_type_slot} pour {guests_slot} personne(s). Est-ce correct ?"
+  utter_end_reservation:
+    - text: "Votre réservation est confirmée ! Merci et à bientôt."
   utter_goodbye:
-  - text: "Au revoir !"
-
-  utter_iamabot:
-  - text: "Je suis un bot, propulsé par Rasa."
-
-  utter_meteo:
-  - text: "Il fait beau aujourd'hui avec une température de 25°C."
-
-  utter_reservation_confirmation:
-  - text: "Vous souhaitez réserver un hôtel pour le {date} à {lieu}, c'est bien ça ?"
-
-rules:
-- rule: Say goodbye anytime the user says goodbye
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
-
-- rule: Say 'I am a bot' anytime the user challenges
-  steps:
-  - intent: bot_challenge
-  - action: utter_iamabot
-
-- rule: Provide weather information when the user asks about the weather
-  steps:
-  - intent: demander_meteo
-  - action: utter_meteo
-
-- rule: Confirm hotel reservation details
-  steps:
-  - intent: reservation_hotel
-  - action: action_confirm_reservation
+    - text: "Votre réservation est annulée ! Merci et à bientôt."
+  utter_greet:
+    - text: "Bonjour ! Comment puis-je vous aider aujourd'hui ?"

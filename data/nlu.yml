@@ -1,108 +1,65 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - salut
-    - bonjour
-    - coucou
-    - bonjour à toi
-    - bon matin
-    - bonsoir
-    - salut
-    - salut à toi
-    - allons-y
-    - salut mec
-    - bonjour tout le monde
-    - bon après-midi
+  - intent: greet
+    examples: |
+      - Bonjour
+      - Salut
+      - Hello
+      - Bonsoir
+      - Coucou
 
-- intent: goodbye
-  examples: |
-    - à plus
-    - au revoir
-    - à plus tard
-    - bonne nuit
-    - bye
-    - adieu
-    - passe une bonne journée
-    - à bientôt
-    - bye bye
-    - à la prochaine
+  - intent: goodbye
+    examples: |
+      - Au revoir
+      - Bye
+      - À bientôt
+      - Je m'en vais
 
-- intent: affirm
-  examples: |
-    - oui
-    - ouais
-    - effectivement
-    - bien sûr
-    - ça me va
-    - c'est exact
+  - intent: book_hotel
+    examples: |
+      - Je voudrais réserver un hôtel
+      - Je cherche une chambre d'hôtel
+      - Pouvez-vous m'aider à réserver une chambre ?
+      - J'ai besoin de réserver un hôtel
 
-- intent: deny
-  examples: |
-    - non
-    - nope
-    - jamais
-    - je ne pense pas
-    - je n'aime pas ça
-    - hors de question
-    - pas vraiment
+  - intent: inform_date
+    examples: |
+      - Pour [demain](date)
+      - À partir du [15 septembre](date)
+      - Je veux réserver du [20 octobre](date) au [25 octobre](date)
+      - Je serai là le [1er novembre](date)
+      - Le [15 décembre](date)
 
-- intent: mood_great
-  examples: |
-    - parfait
-    - génial
-    - incroyable
-    - je me sens comme un roi
-    - merveilleux
-    - je me sens très bien
-    - je suis au top
-    - je suis incroyable
-    - je vais sauver le monde
-    - super excité
-    - extrêmement bien
-    - tellement parfait
-    - trop bien
-    - trop parfait
+  - intent: inform_nights
+    examples: |
+      - Pour [2 nuits](nights)
+      - J'aimerais rester [3 nuits](nights)
+      - Un séjour de [4 jours](nights)
+      - Je resterai [5 nuits](nights)
 
-- intent: mood_unhappy
-  examples: |
-    - ma journée a été horrible
-    - je suis triste
-    - je ne me sens pas très bien
-    - je suis déçu
-    - super triste
-    - je suis tellement triste
-    - triste
-    - très triste
-    - malheureux
-    - pas bien
-    - pas très bien
-    - extrêmement triste
-    - tellement triste
+  - intent: inform_room_type
+    examples: |
+      - Je voudrais une chambre [simple](room_type)
+      - Réservez une [suite](room_type)
+      - Une chambre [double](room_type) avec vue
+      - Je veux une [chambre familiale](room_type)
 
+  - intent: inform_guests
+    examples: |
+      - Pour [3 personnes](guests)
+      - J'ai besoin d'une chambre pour [2 adultes et 1 enfant](guests)
+      - La réservation est pour [5 personnes](guests)
+      - Nous serons [4](guests) dans la chambre
+      - Je réserve pour [6 personnes](guests)
 
-- intent: demander_meteo
-  examples: |
-    - Quelle est la météo aujourd'hui ?
-    - Quel temps fait-il ?
-    - Est-ce qu'il va pleuvoir ?
-    - Fais-moi un point sur la météo
-    - Quel temps fera-t-il demain ?
-    - Il va faire beau aujourd'hui ?
-    - Quelle est la température actuelle ?
+  - intent: confirm
+    examples: |
+      - Je confirme ma réservation
+      - Confirmez ma réservation
+      - Tout est bon
+      - C'est d'accord
 
-- intent: bot_challenge
-  examples: |
-    - es-tu un robot ?
-    - es-tu un humain ?
-    - est-ce que je parle à un robot ?
-    - est-ce que je parle à un humain ?
-
-    
-- intent: reservation_hotel
-  examples: |
-    - Je voudrais réserver un hôtel pour le [12 janvier](date) à [Saint-Malo](lieu).
-    - Réserve un hôtel à [Saint-Malo](lieu) pour le [12 janvier](date).
-    - Je veux une réservation d'hôtel pour le [12 janvier](date) à [Saint-Malo](lieu).
-    - C'est pour le [12 janvier](date) à [Saint-Malo](lieu), n'est-ce pas ?
+  - lookup: nights
+    examples: |
+      -
