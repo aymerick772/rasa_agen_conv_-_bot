@@ -1,18 +1,91 @@
 version: "3.1"
 
 stories:
-
-  - story: réservation d'hôtel réussie
+  - story: Menu principal
     steps:
-      - intent: book_hotel
-      - action: utter_book_hotel
+      - intent: greet
+      - action: utter_greet
+      - action: action_list_choice
+      - intent: choose_action
+
+  - story: Parcours complet de réservation
+    steps:
+      - intent: book_table
+      - action: utter_ask_date
       - intent: inform_date
-      - action: utter_nights
-      - intent: inform_nights
-      - action: utter_room_type
-      - intent: inform_room_type
-      - action: utter_guests
-      - intent: inform_guests
-      - action: utter_confirm
-      - intent: confirm
-      - action: utter_end_reservation
+      - action: utter_ask_people
+      - intent: inform_number_of_people
+      - action: action_check_availability
+      - slot_was_set:
+          - availability_checked: true
+      - action: utter_confirm_reservation
+      - intent: confirm_act
+      - action: utter_ask_name
+      - intent: inform_name
+      - action: utter_ask_phone
+      - intent: inform_phone
+      - action: action_generate_reservation_code
+      - action: utter_reservation_confirmed
+      - action: utter_ask_comment
+      - intent: add_comment
+      - action: action_add_comment
+      - action: utter_goodbye
+
+  - story: Réservation non disponible - autre date
+    steps:
+      - intent: book_table
+      - action: utter_ask_date
+      - intent: inform_date
+      - action: utter_ask_people
+      - intent: inform_number_of_people
+      - action: action_check_availability
+      - slot_was_set:
+          - availability_checked: false
+      - action: utter_ask_another_date
+      - intent: confirm_act
+      - action: utter_ask_date
+
+  - story: Annulation de réservation
+    steps:
+      - intent: cancel_reservation
+      - action: utter_ask_reservation_code
+      - intent: provide_reservation_code
+      - action: action_validate_reservation_code
+      - slot_was_set:
+          - code_valid: true
+      - action: action_cancel_reservation
+      - action: utter_goodbye
+
+  - story: Information sur réservation
+    steps:
+      - intent: request_reservation_info
+      - action: utter_ask_reservation_code
+      - intent: provide_reservation_code
+      - action: action_validate_reservation_code
+      - slot_was_set:
+          - code_valid: true
+      - action: action_get_reservation_info
+      - action: utter_ask_add_comment
+      - intent: confirm_act
+      - action: utter_ask_comment
+      - intent: add_comment
+      - action: action_add_comment
+      - action: utter_goodbye
+
+  - story: Menu du jour
+    steps:
+      - intent: get_menu_of_the_day
+      - action: utter_menu_of_the_day
+      - action: action_list_choice
+
+  - story: Liste des allergènes
+    steps:
+      - intent: get_allergens_list
+      - action: utter_allergens_list
+      - action: action_list_choice
+
+  - story: Lien vers la carte
+    steps:
+      - intent: get_menu_link
+      - action: utter_menu_link
+      - action: action_list_choice

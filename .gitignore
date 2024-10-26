@@ -1,5 +1,5 @@
 # Ignorer les dossiers et fichiers générés automatiquement
-models/
+
 .rasa/
 *.tar.gz
 *.lock

@@ -7,59 +7,114 @@ nlu:
       - Salut
       - Hello
       - Bonsoir
+      - Hey
       - Coucou
 
-  - intent: goodbye
+  - intent: choose_action
     examples: |
-      - Au revoir
-      - Bye
-      - À bientôt
-      - Je m'en vais
+      - Je voudrais voir les options
+      - Que proposez-vous ?
+      - Montrez-moi le menu principal
+      - Quelles sont les options disponibles ?
+      - Menu principal
+      - Options
 
-  - intent: book_hotel
+  - intent: book_table
     examples: |
-      - Je voudrais réserver un hôtel
-      - Je cherche une chambre d'hôtel
-      - Pouvez-vous m'aider à réserver une chambre ?
-      - J'ai besoin de réserver un hôtel
+      - Je veux réserver une table
+      - Nouvelle réservation
+      - Réserver une table
+      - Je souhaite faire une réservation
+      - Réservation de table
+
 
   - intent: inform_date
     examples: |
-      - Pour [demain](date)
-      - À partir du [15 septembre](date)
-      - Je veux réserver du [20 octobre](date) au [25 octobre](date)
-      - Je serai là le [1er novembre](date)
-      - Le [15 décembre](date)
+      - [Ce soir](date)
+      - [Demain](date)
+      - [Demain soir](date)
+      - Pour [ce midi](date)
+      - [Après-demain](date)
+      - Le [20 décembre](date)
+      - [Vendredi prochain](date)
+      - [La semaine prochaine](date)
 
-  - intent: inform_nights
+  - intent: inform_number_of_people
     examples: |
-      - Pour [2 nuits](nights)
-      - J'aimerais rester [3 nuits](nights)
-      - Un séjour de [4 jours](nights)
-      - Je resterai [5 nuits](nights)
+      - Une table pour [6](people)
+      - Nous serons [8](people)
 
-  - intent: inform_room_type
-    examples: |
-      - Je voudrais une chambre [simple](room_type)
-      - Réservez une [suite](room_type)
-      - Une chambre [double](room_type) avec vue
-      - Je veux une [chambre familiale](room_type)
 
-  - intent: inform_guests
+  - intent: confirm_act
     examples: |
-      - Pour [3 personnes](guests)
-      - J'ai besoin d'une chambre pour [2 adultes et 1 enfant](guests)
-      - La réservation est pour [5 personnes](guests)
-      - Nous serons [4](guests) dans la chambre
-      - Je réserve pour [6 personnes](guests)
+      - Oui
+      - Bien sûr
+      - Je confirme
+      - D'accord
+      - Ok pour moi
+      - Parfait
 
-  - intent: confirm
+  - intent: deny
     examples: |
-      - Je confirme ma réservation
-      - Confirmez ma réservation
-      - Tout est bon
-      - C'est d'accord
+      - Non
+      - Pas maintenant
+      - Je ne pense pas
+      - Je refuse
+      - Pas d'accord
 
-  - lookup: nights
+  - intent: inform_name
     examples: |
-      -
+      - Au nom de [Bernard](name)
+      - Réservation pour [Smith](name)
+      - C'est pour [Durant](name)
+
+  - intent: inform_phone
+    examples: |
+      - Mon numéro est le [0687654321](phone)
+      - Téléphone : [0798765432](phone)
+
+  - intent: cancel_reservation
+    examples: |
+      - Je veux annuler ma réservation
+      - Annulation de réservation
+      - Annuler une réservation
+
+
+  - intent: request_reservation_info
+    examples: |
+      - Je voudrais voir ma réservation
+      - Information sur ma réservation
+      - Voir les détails de ma réservation
+
+
+  - intent: provide_reservation_code
+    examples: |
+      - [ABC123](reservation_code)
+      - Code [XYZ789](reservation_code)
+      - [GHI789](reservation_code)
+      - [4JT7LH](reservation_code)
+
+  - intent: add_comment
+    examples: |
+      - Je voudrais ajouter un commentaire
+      - Ajouter une note
+      - Modifier le commentaire
+      - Note supplémentaire
+
+  - intent: get_menu_of_the_day
+    examples: |
+      - Quel est le menu du jour ?
+      - Menu du jour
+      - Plat du jour
+
+  - intent: get_allergens_list
+    examples: |
+      - Liste des allergènes
+      - Voir les allergènes
+      - Information allergènes
+
+  - intent: get_menu_link
+    examples: |
+      - Je voudrais voir la carte
+      - Accéder à la carte
+      - Voir le menu complet

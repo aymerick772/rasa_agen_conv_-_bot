@@ -2,59 +2,127 @@ version: "3.1"
 
 intents:
   - greet
-  - book_hotel
+  - choose_action
+  - book_table
   - inform_date
-  - inform_nights
-  - inform_room_type
-  - inform_guests
-  - confirm
-  - goodbye
+  - inform_number_of_people
+  - confirm_act
+  - deny
+  - inform_name
+  - inform_phone
+  - cancel_reservation
+  - request_reservation_info
+  - provide_reservation_code
+  - add_comment
+  - get_menu_of_the_day
+  - get_allergens_list
+  - get_menu_link
+
+entities:
+  - date
+  - people
+  - name
+  - phone
+  - reservation_code
 
 slots:
-  date_slot:
+  date:
     type: text
     mappings:
       - type: from_entity
         entity: date
-
-  nights_slot:
+        conditions:
+         - active_loop: null
+  people:
     type: text
     mappings:
       - type: from_entity
-        entity: nights
-
-  room_type_slot:
+        entity: people
+        conditions:
+         - active_loop: null
+  name:
     type: text
     mappings:
       - type: from_entity
-        entity: room_type
-
-  guests_slot:
+        entity: name
+        conditions:
+         - active_loop: null
+  phone:
     type: text
     mappings:
       - type: from_entity
-        entity: guests
-
-entities:
-  - date
-  - nights
-  - room_type
-  - guests
-
+        entity: phone
+        conditions:
+         - active_loop: null
+  reservation_code:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: reservation_code
+        conditions:
+         - active_loop: null
+  availability_checked:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+  code_valid:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: custom
+      
 responses:
-  utter_book_hotel:
-    - text: "Je peux vous aider à réserver une chambre d'hôtel. C'est pour quelle date ?"
-  utter_nights:
-    - text: "Combien de nuits souhaitez-vous rester ?"
-  utter_room_type:
-    - text: "Préférez-vous une chambre simple, double, ou une suite ?"
-  utter_guests:
-    - text: "Combien de personnes séjourneront dans la chambre ?"
-  utter_confirm:
-    - text: "Merci pour ces informations. Votre réservation est confirmée pour {nights_slot} nuit(s) à partir du {date_slot}, dans une chambre {room_type_slot} pour {guests_slot} personne(s). Est-ce correct ?"
-  utter_end_reservation:
-    - text: "Votre réservation est confirmée ! Merci et à bientôt."
-  utter_goodbye:
-    - text: "Votre réservation est annulée ! Merci et à bientôt."
   utter_greet:
-    - text: "Bonjour ! Comment puis-je vous aider aujourd'hui ?"
+    - text: "Bonjour ! Bienvenue au restaurant Le Gourmet."
+
+  utter_ask_date:
+    - text: "Pour quelle date souhaitez-vous réserver ?"
+
+  utter_ask_people:
+    - text: "Pour combien de personnes souhaitez-vous réserver ?"
+
+  utter_ask_name:
+    - text: "Sous quel nom dois-je faire la réservation ?"
+
+  utter_ask_phone:
+    - text: "Quel est votre numéro de téléphone ?"
+
+  utter_ask_reservation_code:
+    - text: "Veuillez me donner votre code de réservation."
+
+  utter_ask_another_date:
+    - text: "Souhaitez-vous essayer une autre date ?"
+
+  utter_confirm_reservation:
+    - text: "Souhaitez-vous confirmer la réservation ?"
+
+  utter_reservation_confirmed:
+    - text: "Parfait ! Votre réservation est confirmée."
+
+  utter_ask_add_comment:
+    - text: "Souhaitez-vous ajouter un commentaire à votre réservation ?"
+
+  utter_ask_comment:
+    - text: "Quel commentaire souhaitez-vous ajouter ?"
+
+  utter_menu_of_the_day:
+    - text: "Voici notre menu du jour : {menu}"
+
+  utter_allergens_list:
+    - text: "Voici la liste de nos allergènes : {allergens}"
+
+  utter_menu_link:
+    - text: "Vous pouvez consulter notre carte complète ici : [lien_vers_la_carte]"
+
+  utter_goodbye:
+    - text: "Merci de votre visite ! Au revoir."
+
+actions:
+  - action_list_choice
+  - action_check_availability
+  - action_generate_reservation_code
+  - action_validate_reservation_code
+  - action_get_reservation_info
+  - action_cancel_reservation
+  - action_add_comment
