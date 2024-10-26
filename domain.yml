@@ -10,6 +10,9 @@ intents:
   - bot_challenge
   - demander_meteo
 
+actions:
+  - action_confirm_reservation
+
 responses:
   utter_greet:
   - text: "Salut ! Comment ça va ?"
